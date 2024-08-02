@@ -1,20 +1,20 @@
-#site de partage de recette de cuisine
+# site de partage de recette de cuisine
 
-##but du site
+## but du site
 
-+1 pratiquer le php en mettant en place un petit site internet dynamique
++ pratiquer le php en mettant en place un petit site internet dynamique
 
-+2 pratiquer les bases de données sql
++ pratiquer les bases de données sql
 
 ---
-#langages utilisés
+# langages utilisés
 
-##frontend
+## frontend
 
-+1 HTML
++ HTML
 
-+2 css
++ css
 
-##backend
+## backend
 
-*php*
+* php *
