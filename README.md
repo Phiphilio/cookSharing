@@ -1,5 +1,11 @@
 # site de partage de recette de cuisine
 
++ Des utilisateurs se connectent : ils ont un nom, un e-mail, un mot de passe, un âge...
+
++ Ils consultent ou créent des recettes : elles ont un titre, un corps (la recette), un      statut d'activation...
+
+Et ainsi de suite pour chacun des objets qui constituent le projet.
+
 ## but du site
 
 + pratiquer le php en mettant en place un petit site internet dynamique
