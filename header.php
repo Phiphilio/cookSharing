@@ -5,7 +5,7 @@
             <ul>
                 <li><a href="contact.php">Contactez nous</a></li>
                 <li><a href="index.php">accueil</a></li>
-                <li><a href="page3.html">Lien</a></li>
+                <li><a href="submit_contact.php">Lien</a></li>
             </ul>
         </div>
     </nav>
