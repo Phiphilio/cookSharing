@@ -1,75 +1,7 @@
 <?php
-$recette = [
-    [
-        'title' => 'Cassoulet',
-        'recipe' => 'Etape 1 : des flageolets !',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Couscous',
-        'recipe' => 'Etape 1 : de la semoule',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => false,
-    ],
-    [
-        'title' => 'Escalope milanaise',
-        'recipe' => 'Etape 1 : prenez une belle escalope',
-        'author' => 'mathieu.nebra@exemple.com',
-        'is_enabled' => true,
-    ],
-];
+require_once(__DIR__ .'/backend/variables.php');
 
-
-$users = [
-    [
-        'full_name' => 'Mickaël Andrieu',
-        'email' => 'mickael.andrieu@exemple.com',
-        'age' => 34,
-    ],
-    [
-        'full_name' => 'Mathieu Nebra',
-        'email' => 'mathieu.nebra@exemple.com',
-        'age' => 34,
-    ],
-    [
-        'full_name' => 'Laurène Castor',
-        'email' => 'laurene.castor@exemple.com',
-        'age' => 28,
-    ],
-];
-
-function displayAuthor(array $tab1, array $tab2){
-
-    for($index = 0; $index < 3; $index++) {
-        if($tab1[$index]['email']=== $tab2['author']){
-            return $tab1[$index]['full_name'] . '('.$tab1[$index]['age'] . ')';
-
-        }
-    }
-}
-
-function isValidRecipe(array $state): bool
-{
-
-    if (array_key_exists("is_enabled", $state) && ($state['is_enabled'] === true)) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-function getRecipes( array $testRecipes) : array {
-
-    $valideRecipes = [];
-
-    foreach($testRecipes as $testRecipesValue)
-     if (isValidRecipe($testRecipesValue)){
-        $valideRecipes[] = $testRecipesValue;
-     }
-     return $valideRecipes;
-}
-
+require_once(__DIR__ . '/backend/functions.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,16 +12,38 @@ function getRecipes( array $testRecipes) : array {
 </head>
 
 <body>
+    <header>
+        <?php 
+        require_once(__DIR__ . '/header.php');
+        /**
+         * __DIR__ est une constante magique en PHP qui contient le chemin absolu du répertoire
+         *  dans lequel se trouve le script en cours d'exécution. il combine ce chemin avec le relatif
+         * mis dans '/header.php'. ça permet de gérer dynamiquement la position du fichier.
+         * 
+         * Chemins absolus : c'est le chemin qui part de la racine jusqu'au fichier voulu.
+         * c'est l'équivalent d'une adresse exacte 17 rue des carnos 75000 paris
+         * exemple : C:\Users\user\Documents\developpement\phpOpenclassroom\index.php
+         * 
+         * chemin relatif : c'est le chemin à partir d'un fichier quelqconque.
+         * c'est l'équivalent de vouloir aller quelque par et de chercher le chemin par rapport
+         * à où je suis.
+         * exemple : developpement\phpOpenclassroom\index.php
+         */
+        ?>
+    </header>
     <h2>affichage des recettes</h2>
 
-   <?php
-    foreach(getRecipes($recette) as $recetteValues) : ?>
-    <section>
-        <div> <?php echo $recetteValues['title']; ?></div>
-     <i> <?php echo displayAuthor($users,$recetteValues); ?></i>
-     </section> <br/>
-   <?php endforeach;
+    <?php
+    foreach (getRecipes($recette) as $recetteValues) : ?>
+        <section>
+            <div> <?php echo $recetteValues['title']; ?></div>
+            <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
+        </section> <br />
+    <?php endforeach;
     ?>
+    <footer id="pied_de_page">
+        <?php require_once(__DIR__ . '/footer.php');?>
+    </footer>
 </body>
 
 </html>
