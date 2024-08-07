@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ .'/backend/variables.php');
+require_once(__DIR__ . '/backend/variables.php');
 
 require_once(__DIR__ . '/backend/functions.php');
 ?>
@@ -7,13 +7,17 @@ require_once(__DIR__ . '/backend/functions.php');
 <html>
 
 <head>
-    <title>Ceci est une page de test avec des balises PHP</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de recettes - Page d'accueil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <header>
-        <?php 
+<body class="d-flex flex-column min-vh-100">
+    <div class="container">
+        <!-- inclusion du footer -->
+        <?php
         require_once(__DIR__ . '/header.php');
         /**
          * __DIR__ est une constante magique en PHP qui contient le chemin absolu du répertoire
@@ -30,20 +34,19 @@ require_once(__DIR__ . '/backend/functions.php');
          * exemple : developpement\phpOpenclassroom\index.php
          */
         ?>
-    </header>
-    <h2>affichage des recettes</h2>
+        <h1>site de recettes</h1>
 
-    <?php
-    foreach (getRecipes($recette) as $recetteValues) : ?>
-        <section>
-            <div> <?php echo $recetteValues['title']; ?></div>
-            <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
-        </section> <br />
-    <?php endforeach;
-    ?>
-    <footer id="pied_de_page">
-        <?php require_once(__DIR__ . '/footer.php');?>
-    </footer>
+        <?php
+        foreach (getRecipes($recette) as $recetteValues) : ?>
+            <section>
+                <div> <?php echo $recetteValues['title']; ?></div>
+                <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
+            </section> <br />
+        <?php endforeach; ?>
+
+    </div>
+    <!-- inclusion du footer -->
+    <?php require_once(__DIR__ . '/footer.php'); ?>
 </body>
 
 </html>
