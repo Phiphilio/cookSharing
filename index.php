@@ -29,8 +29,8 @@ require_once(__DIR__ . '/backend/functions.php');
          * exemple : C:\Users\user\Documents\developpement\phpOpenclassroom\index.php
          * 
          * chemin relatif : c'est le chemin à partir d'un fichier quelqconque.
-         * c'est l'équivalent de vouloir aller quelque par et de chercher le chemin par rapport
-         * à où je suis.
+         * c'est l'équivalent de vouloir aller quelque par et d'indiqquer' le chemin par:
+         * " dans 2 rues plus loin, tu vires à droite et ce que tu cherches est à côté de ce batiment
          * exemple : developpement\phpOpenclassroom\index.php
          */
         ?>
