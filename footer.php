@@ -1,5 +1,6 @@
-<footer id="pied_de_page">
-    <div>
-        <p>Copyright moi, tous droits réservés</p>
-    </div>
+<footer class="bg-light text-center text-lg-start mt-auto">
+<div class="text-center p-3">
+    © 2021 Copyright:
+    <a class="text-dark" href="header.php"> cook</a>
+  </div>
 </footer>
