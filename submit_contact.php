@@ -35,6 +35,14 @@ if (!is_dir($path)) {
 
 // On peut valider le fichier et le stocker définitivement
 move_uploaded_file($_FILES['screenshot']['tmp_name'], $path . basename($_FILES['screenshot']['name']));
+/**
+ * $_FILES['screenshot']['tmp_name'] c'est l'endroit où est temporairement stocké le fichier
+ * $path . basename($_FILES['screenshot']['name']) c'est une concaténation qui dit :
+ *  __DIR__ . "/uploads/" . nom_du_fichier.extension
+ * 
+ * donc en goros, move_uploaded_file bouge le fichier du repertoire temporaire vers le repertoire définitif
+ * 
+ */
 $isFileLoaded = true;
 }
 ?>
