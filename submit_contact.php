@@ -8,7 +8,7 @@ if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
         return;
     }
 
-    $isFileLoaded = false;
+    $isFileLoaded = false;// c'est la pour l'affichage du message quand le fichier sera envoyé
 
 //on utilise la fonction pathinfo pour stocker des infos dont l'extension du fichier
 $filesInfo = pathinfo($_FILES['screenshot']['name']);
