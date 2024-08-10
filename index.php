@@ -1,7 +1,10 @@
 <?php
+//récupère les infos
 require_once(__DIR__ . '/backend/variables.php');
 
 require_once(__DIR__ . '/backend/functions.php');
+
+//récupère les données du formulaire
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,31 +22,23 @@ require_once(__DIR__ . '/backend/functions.php');
         <!-- inclusion du footer -->
         <?php
         require_once(__DIR__ . '/header.php');
-        /**
-         * __DIR__ est une constante magique en PHP qui contient le chemin absolu du répertoire
-         *  dans lequel se trouve le script en cours d'exécution. il combine ce chemin avec le relatif
-         * mis dans '/header.php'. ça permet de gérer dynamiquement la position du fichier.
-         * 
-         * Chemins absolus : c'est le chemin qui part de la racine jusqu'au fichier voulu.
-         * c'est l'équivalent d'une adresse exacte 17 rue des carnos 75000 paris
-         * exemple : C:\Users\user\Documents\developpement\phpOpenclassroom\index.php
-         * 
-         * chemin relatif : c'est le chemin à partir d'un fichier quelqconque.
-         * c'est l'équivalent de vouloir aller quelque par et d'indiqquer' le chemin par:
-         * " dans 2 rues plus loin, tu vires à droite et ce que tu cherches est à côté de ce batiment
-         * exemple : developpement\phpOpenclassroom\index.php
-         */
         ?>
         <h1>site de recettes</h1>
+        <?php if (!isset($loggedUser)) : ?>
+            <?php
+            require_once(__DIR__ . '/login.php');
+            ?>
+        <?php endif ?>
 
-        <?php
-        foreach (getRecipes($recette) as $recetteValues) : ?>
-            <section>
-                <div> <?php echo $recetteValues['title']; ?></div>
-                <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
-            </section> <br />
-        <?php endforeach; ?>
-
+        <?php if (isset($loggedUser)) : ?>
+            <?php
+            foreach (getRecipes($recette) as $recetteValues) : ?>
+                <section>
+                    <div> <?php echo $recetteValues['title']; ?></div>
+                    <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
+                </section> <br />
+            <?php endforeach; ?>
+        <?php endif ?>
     </div>
     <!-- inclusion du footer -->
     <?php require_once(__DIR__ . '/footer.php'); ?>
