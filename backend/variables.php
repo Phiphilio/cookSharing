@@ -1,4 +1,4 @@
-<?php $recette = [
+<?php $recipe = [
     [
         'title' => 'Cassoulet',
         'recipe' => 'Etape 1 : des flageolets !',
@@ -26,17 +26,20 @@ $users = [
         'email' => 'mickael.andrieu@exemple.com',
         'age' => 34,
         'password' => 'kai',
+        'user_id' => 'mic',
     ],
     [
         'full_name' => 'Mathieu Nebra',
         'email' => 'mathieu.nebra@exemple.com',
         'age' => 34,
         'password' => 'openclassroom',
+        'user_id' => 'mat',
     ],
     [
         'full_name' => 'Laurène Castor',
         'email' => 'laurene.castor@exemple.com',
         'age' => 28,
         'password' => 'openclassroom',
+        'user_id' => 'lau',
     ],
 ];

@@ -1,4 +1,6 @@
 <?php
+session_start(); //session générée
+
 //récupère les infos
 require_once(__DIR__ . '/backend/variables.php');
 
@@ -24,20 +26,18 @@ require_once(__DIR__ . '/backend/functions.php');
         require_once(__DIR__ . '/header.php');
         ?>
         <h1>site de recettes</h1>
-        <?php if (!isset($loggedUser)) : ?>
-            <?php
-            require_once(__DIR__ . '/login.php');
-            ?>
-        <?php endif ?>
+        <!--on récupère le formulaire-->
+        <?php require_once(__DIR__ . '/login.php'); ?>
 
-        <?php if (isset($loggedUser)) : ?>
-            <?php
-            foreach (getRecipes($recette) as $recetteValues) : ?>
-                <section>
-                    <div> <?php echo $recetteValues['title']; ?></div>
-                    <i> <?php echo displayAuthor($users, $recetteValues); ?></i>
-                </section> <br />
-            <?php endforeach; ?>
+        <?php foreach (getRecipes($recipe) as $recipe) : ?>
+            <article>
+                <h3><?php echo $recipe['title']; ?></h3>
+                <div><?php echo $recipe['recipe']; ?></div>
+                <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
+            </article>
+        <?php endforeach ?>
+        <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
+            <?php echo $_SESSION['LOGGED_USER']['email'] ?>
         <?php endif ?>
     </div>
     <!-- inclusion du footer -->

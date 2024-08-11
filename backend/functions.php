@@ -1,30 +1,42 @@
-<?php function displayAuthor(array $tab1, array $tab2): string
-{
+<?php
 
-    for ($index = 0; $index < 3; $index++) {
-        if ($tab1[$index]['email'] === $tab2['author']) {
-            return $tab1[$index]['full_name'] . '(' . $tab1[$index]['age'] . ')';
+function displayAuthor(string $authorEmail, array $users): string
+{
+    foreach ($users as $user) {
+        if ($authorEmail === $user['email']) {
+            return $user['full_name'] . '(' . $user['age'] . ' ans)';
         }
     }
+
+    return 'Auteur inconnu';
 }
 
-function isValidRecipe(array $state): bool
+function isValidRecipe(array $recipe): bool
 {
-
-    if (array_key_exists("is_enabled", $state) && ($state['is_enabled'] === true)) {
-        return true;
+    if (array_key_exists('is_enabled', $recipe)) {
+        $isEnabled = $recipe['is_enabled'];
     } else {
-        return false;
+        $isEnabled = false;
     }
-};
-function getRecipes(array $testRecipes): array
+
+    return $isEnabled;
+}
+
+function getRecipes(array $recipes): array
 {
+    $valid_recipes = [];
 
-    $valideRecipes = [];
-
-    foreach ($testRecipes as $testRecipesValue)
-        if (isValidRecipe($testRecipesValue)) {
-            $valideRecipes[] = $testRecipesValue;
+    foreach ($recipes as $recipe) {
+        if (isValidRecipe($recipe)) {
+            $valid_recipes[] = $recipe;
         }
-    return $valideRecipes;
+    }
+
+    return $valid_recipes;
+}
+
+function redirectToUrl(string $url): never
+{
+    header("Location: {$url}");
+    exit();
 }
