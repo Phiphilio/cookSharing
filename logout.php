@@ -1,8 +1,13 @@
-<?php 
-session_destroy();
+<?php
 
-//récupère la fonction de redirection
+session_start(); // Démarrez la session si ce n'est pas déjà fait
+
 require_once(__DIR__ . '/backend/functions.php');
 
-redirectToUrl('index.php');
+// Détruire la session
+session_unset();//détruit toute les variables stockées dans $_SESSION mais pas la superglobal elle-même
+session_destroy();
+
+// Rediriger l'utilisateur vers la page d'accueil
+redirectToUrl('index.php'); 
 ?>

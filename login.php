@@ -1,7 +1,9 @@
-<?php
+<!-- Ce fichier ne doit PAS appeler session_start() car il est inclus dans index.php
+si un fichier qui appelle sessions start en inclus un autre, la superglobale
+$_SESSION est automatiquement présente dans ce fichier inclus.
+dans le cas contraire, je dois appeler session_start() 
+-->
 
-
-?>
 <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
     <form action="submit_login.php" method="POST">
         <!-- si message d'erreur on l'affiche -->

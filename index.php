@@ -1,9 +1,8 @@
 <?php
-session_start(); //session générée
+session_start(); // session générée
 
 //récupère les infos
 require_once(__DIR__ . '/backend/variables.php');
-
 require_once(__DIR__ . '/backend/functions.php');
 
 //récupère les données du formulaire
