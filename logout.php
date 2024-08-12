@@ -1,6 +1,7 @@
 <?php
 
 session_start(); // Démarrez la session si ce n'est pas déjà fait
+//et surtout, récupère la superglobal $_SESSION
 
 require_once(__DIR__ . '/backend/functions.php');
 

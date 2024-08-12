@@ -1,6 +1,6 @@
-<!-- Ce fichier ne doit PAS appeler session_start() car il est inclus dans index.php
-si un fichier qui appelle sessions start en inclus un autre, la superglobale
-$_SESSION est automatiquement présente dans ce fichier inclus.
+<!-- Ce fichier ne doit PAS appeler session_start() car il est inclus dans index.php.
+si un fichier appelle sessions start , la superglobale
+$_SESSION est automatiquement présente dans ce fichier.
 dans le cas contraire, je dois appeler session_start() 
 -->
 
