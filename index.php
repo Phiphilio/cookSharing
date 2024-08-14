@@ -39,6 +39,7 @@ require_once(__DIR__ . '/backend/functions.php');
             <?php echo $_SESSION['LOGGED_USER']['email'] ?>
         <?php endif ?>
     </div>
+    <?php require_once(__DIR__ .'/connexionDB.php')?>
     <!-- inclusion du footer -->
     <?php require_once(__DIR__ . '/footer.php'); ?>
 </body>
