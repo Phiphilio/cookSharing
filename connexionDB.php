@@ -1,18 +1,27 @@
 <?php
+require_once(__DIR__ . "/config/mysql.php");
 try {
     // On se connecte à MySQL
-    $mysqlClient = new PDO('mysql:host=localhost;dbname=partage_de_recettes;charset=utf8', 'root', '');
+    $mysqlClient = new PDO(
+        $hoteName.';'.$databaseName.';charset=utf8',//premier paramètre
+        $dbId,//deuxième
+        $dbPassword,//troisième
+          [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
+          /**
+           * paramètre à mettre au pdo pour qu'il affiche les erreurs dans la requête sql
+          */
+        );
 } catch (Exception $e) {
-    // En cas d'erreur, on affiche un message et on arrête tout
+
     die('Erreur : ' . $e->getMessage());
 }
-// Si tout va bien, on peut continuer
 
-// On récupère tout le contenu de la table recipes
-$sqlQuery ="SELECT * FROM `recipes` WHERE is_enabled = true";
-$recipesStatement = $mysqlClient->prepare($sqlQuery);
-/**prepare est la methode de l'objet $mysqlClient. cette methode renvoie un objet
- PDOStatement qui est ensuite stocké dans $recipesStatement*/
+
+
+$recipesStatement = $mysqlClient->prepare($sqlQueryRecipes);
+/**prepare est la methode de l'objet $mysqlClient. cette methode a  pour but
+ * de préparer la requête et de la sécurier afin d'éviter des attaques.
+ *  la methode renvoie un objet PDOStatement qui est ensuite stocké dans $recipesStatement*/
 
 $recipesStatement->execute();
  /**execute() methode de l'objet stocké dans $recipesStatement a pour rôle d'envoyer
@@ -30,9 +39,12 @@ $recipes = $recipesStatement->fetchAll();
  */
 
 // On affiche chaque recette une à une
-foreach ($recipes as $recipe) {
-?>
-    <p><?php var_dump($recipe["recipe"]) ?></p>
-<?php
-}
+
+
+// on envoie la requête pour le deuxième tableau
+$usersStatement = $mysqlClient -> prepare($sqlQueryUsers);
+
+$usersStatement-> execute();
+
+$users = $usersStatement -> fetchAll();
 ?>
