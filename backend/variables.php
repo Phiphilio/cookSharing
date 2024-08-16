@@ -1,45 +1,17 @@
-<?php $recipe = [
-    [
-        'title' => 'Cassoulet',
-        'recipe' => 'Etape 1 : des flageolets !',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Couscous',
-        'recipe' => 'Etape 1 : de la semoule',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => false,
-    ],
-    [
-        'title' => 'Escalope milanaise',
-        'recipe' => 'Etape 1 : prenez une belle escalope',
-        'author' => 'mathieu.nebra@exemple.com',
-        'is_enabled' => true,
-    ],
-];
+<?php
+require_once(__DIR__ . "/../connexionDB.php");
+// petite explication
+/**
+ * le secret avec __DIR__ cest que le chemin absolu qu'il contient
+ * est concatené avec le chemin relatif que j'ajoute.
+ * ça veut dire que si j'avais écrit /phpOpenclassroom/connexionDB.php
+ * php aurait cherché dans le répertoire où __DIR__ se termine puis
+ * aurait cherché un sous répertoire nommé : phpOpenclassroom.
+ * 
+ * pour rappel __DIR__ = chemin depuis la racine du système de jusqu'au ficher
+ * où je l'ai écrit donc ici
+ * __DIR__ = C:\Users\monNom\Documents\developpement\phpOpenclassroom\backend
+ * et c'est toute cette chaine qui est collée à /../connexionDB.php
+ */
 
 
-$users = [
-    [
-        'full_name' => 'Mickaël Andrieu',
-        'email' => 'mickael.andrieu@exemple.com',
-        'age' => 34,
-        'password' => 'kai',
-        'user_id' => 'mic',
-    ],
-    [
-        'full_name' => 'Mathieu Nebra',
-        'email' => 'mathieu.nebra@exemple.com',
-        'age' => 34,
-        'password' => 'openclassroom',
-        'user_id' => 'mat',
-    ],
-    [
-        'full_name' => 'Laurène Castor',
-        'email' => 'laurene.castor@exemple.com',
-        'age' => 28,
-        'password' => 'openclassroom',
-        'user_id' => 'lau',
-    ],
-];
