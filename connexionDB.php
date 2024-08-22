@@ -47,4 +47,5 @@ $usersStatement = $mysqlClient -> prepare($sqlQueryUsers);
 $usersStatement-> execute();
 
 $users = $usersStatement -> fetchAll();
+
 ?>
