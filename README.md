@@ -1,3 +1,6 @@
+# Apprentissage de PHP à travers un petit projet
+Ce site m'a permi de mettre en place un CRUD avec un base de donnée MySql
+---
 # site de partage de recette de cuisine
 
 + Des utilisateurs se connectent : ils ont un nom, un e-mail, un mot de passe, un âge...
